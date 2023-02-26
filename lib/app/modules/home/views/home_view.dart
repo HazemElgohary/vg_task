@@ -127,12 +127,16 @@ class HomeView extends GetView<HomeController> {
                               .toList(),
                         ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                DefaultButton(
-                  text: 'calc',
-                  onTap: controller.calc,
+                Obx(
+                  () => controller.genes.isEmpty || controller.strands.isEmpty
+                      ? const SizedBox.shrink()
+                      : DefaultButton(
+                          text: 'calc',
+                          onTap: controller.calc,
+                        ),
                 ),
               ],
             ),
